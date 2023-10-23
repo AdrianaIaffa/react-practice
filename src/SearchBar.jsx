@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 
-export default function SearchBar() {
-    // getAllGiphys
+export default function SearchBar({handleOnCLick}) {
+   
     const [searchBar, setSearchBar] = useState('')
     const url = process.env.DATABASE_URL;
 
@@ -11,18 +11,11 @@ export default function SearchBar() {
         console.log('Search Bar Content:', event.target.value);
     }
     function handleSearchSubmit(evt) {
+        handleOnCLick(searchBar)
         evt.preventDefault()
         console.log('search info', searchBar)
-        const apiUrl=`${url}${searchBar}`
-        console.log('API URL:', apiUrl);
-    //     fetch(url)
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             setSearchBar(data)
-    //         })
-    //         .catch((error) => {
-    //         console.error('Error fetching data:', error);
-    //         });
+        // const apiUrl=`${url}${searchBar}`
+        // console.log('API URL:', apiUrl);
 
     }
   return (
