@@ -1,6 +1,10 @@
 import { useState } from "react";
+
 import SearchBar from "./SearchBar";
 import GifList from "./GifList";
+
+
+
 
 
 export default function App() {
