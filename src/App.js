@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+
+  const [giphys, setGiphys] = useState([]);
+  
+  function handleOnCLick(searchText){
+      console.log("call onClick Function");
+      const api_path = "NF4A7l93qUNNp0C83adlXCAcDmdjjDDh";
+      const limit = 8;
+      fetch(`https://api.giphy.com/v1/gifs/search?api_key=${api_path}&q=${searchText}&limit=${limit}`)  
+      .then(response => response.json())
+      .then(result => {
+          // console.log(`searcgText: ${searchText}`);
+          // console.log(`All Giphys: ${JSON.stringify(result.data)}`);
+          //return result.data;
+          setGiphys(result.data);
+          console.log(`Giphys Array: ${JSON.stringify(giphys)}`);
+    })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       
     </div>
   );
 }
